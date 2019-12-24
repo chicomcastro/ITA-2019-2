@@ -1,0 +1,400 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Lista 01 - Parte 1b</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-11"><meta name="DC.source" content="ENTREGAVEL_parte1b.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Lista 01 - Parte 1b</h1><!--introduction--><p>Autor: Francisco Castro</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">Prepara&ccedil;&atilde;o do ambiente</a></li><li><a href="#3">Implementa&ccedil;&atilde;o da estrutura para o m&eacute;todo TRIAD</a></li><li><a href="#4">Carregamento os dados</a></li><li><a href="#5">Coordenadas iniciais</a></li><li><a href="#6">Outside: Resultados</a></li><li><a href="#7">Outside: Verifica&ccedil;&atilde;o de resultados e coment&aacute;rios</a></li><li><a href="#8">Inside: Resultados</a></li><li><a href="#9">Inside: Verifica&ccedil;&atilde;o de resultados e coment&aacute;rios</a></li><li><a href="#11">Conclus&otilde;es</a></li></ul></div><p>Nesta parte fazem-se as an&aacute;lises referentes aos dados presentes nos arquivos <i>SN500574Inside.mat</i> e <i>SN500574Outside.mat</i></p><h2 id="2">Prepara&ccedil;&atilde;o do ambiente</h2><pre class="codeinput">close <span class="string">all</span>
+format
+clear
+clc
+</pre><h2 id="3">Implementa&ccedil;&atilde;o da estrutura para o m&eacute;todo TRIAD</h2><p>Implementou-se, analogamente, o m&eacute;todo TRIAD considerando agora o vetor campo geomagn&eacute;tico ao inv&eacute;s do vetor velocidade angular para a correla&ccedil;&atilde;o entre as medidas no referencial do corpo e do NED. A metodologia &eacute; an&aacute;loga a feita para a parte 1a, por isso preferiu-se por omitir o c&oacute;digo.</p><pre class="codeinput">triad_var
+</pre><h2 id="4">Carregamento os dados</h2><pre class="codeinput">load(<span class="string">'IMU Estacionaria/SN500574Inside.mat'</span>);
+load(<span class="string">'IMU Estacionaria/SN500574Outside.mat'</span>);
+</pre><h2 id="5">Coordenadas iniciais</h2><pre class="codeinput">coordInside.latitude = -(23.20995)*pi/180;
+coordInside.longitude =  -(45.87712)*pi/180;
+coordInside.altitude = 630; <span class="comment">% m</span>
+coordOutside.latitude = -(23.20947)*pi/180;
+coordOutside.longitude =  -(45.87722)*pi/180;
+coordOutside.altitude = 630; <span class="comment">% m</span>
+</pre><h2 id="6">Outside: Resultados</h2><pre class="codeinput">coord = coordInside;
+dados = outside;
+gm_NED = [17046.4,-6679.6,-13904.3]';   <span class="comment">% em nanoTesla (a ser normalizado)</span>
+non_incremental_metodologia;
+resultados;
+</pre><pre class="codeoutput">
+D0_NED_B_base1 =
+
+    1.0014   -0.3627    0.0073
+    0.3619    1.0010   -0.0069
+    0.0820   -0.0245    0.9999
+
+
+q0_base1 =
+
+    1.0003
+    0.0044
+    0.0187
+   -0.1811
+
+
+euler0_base1 =
+
+   -0.3700
+    0.0389
+    0.0020
+
+
+D0_NED_B_base2 =
+
+    1.0008   -0.3624    0.0073
+    0.3625    1.0008   -0.0069
+   -0.0048    0.0096    0.9999
+
+
+q0_base2 =
+
+    1.0002
+   -0.0041
+   -0.0030
+   -0.1812
+
+
+euler0_base2 =
+
+   -0.3700
+   -0.0076
+   -0.0072
+
+
+D0_NED_B_base3 =
+
+    0.9402   -0.3405    0.0073
+    0.3405    0.9402   -0.0069
+   -0.0045    0.0090    0.9999
+
+
+q0_base3 =
+
+    0.9849
+   -0.0040
+   -0.0030
+   -0.1729
+
+
+euler0_base3 =
+
+   -0.3475
+   -0.0073
+   -0.0069
+
+</pre><h2 id="7">Outside: Verifica&ccedil;&atilde;o de resultados e coment&aacute;rios</h2><p>Temos que os resultados expostos correspondem &agrave;s an&aacute;lises an&aacute;logas de</p><div><ol><li>verifica&ccedil;&atilde;o dos determinantes das DCM iniciais obtidas</li><li>verifica&ccedil;&atilde;o das normas dos quaternions iniciais obtidos</li><li>desalinhamento para as matrizes ortogonais mais pr&oacute;ximas advindas do m&eacute;todo de ortonormaliza&ccedil;&atilde;o iterativa em rela&ccedil;&atilde;o a DCM original para cada base (desalinhamentoOrtoIt)</li><li>desalinhamento para as DCM provenientes dos quaternions obtidos como melhores quaternion de rota&ccedil;&atilde;o para cada estimativa de quaternion inicial (desalinhamentoNormIt) com rela&ccedil;&atilde;o &agrave; estimativa de DCM original para cada base</li><li>medida do desalinhamento cruzado entre as DCM originais, bem como as obtidas do processo de ortonormaliza&ccedil;&atilde;o e normaliza&ccedil;&atilde;o iterativo comparadas com a estimativa de DCM originalmente obtida utilizando a base 3, tomada como refer&ecirc;ncia (melhor estimativa)</li></ol></div><pre class="codeinput">analise;
+</pre><pre class="codeoutput">
+determinantesDCM =
+
+        1.133        1.133            1
+
+
+normasQuat =
+
+       1.0167       1.0165            1
+
+
+desalinhamentoOrtoIt =
+
+   2.0198e-17   2.7884e-17            0
+
+
+desalinhamentoNormIt =
+
+     0.014441     0.011661   1.9344e-18
+
+
+desalinhamentoCruzado =
+
+     0.046652   9.5529e-19            0
+      0.04515    2.117e-18            0
+     0.047117     0.010955   1.9344e-18
+
+</pre><h2 id="8">Inside: Resultados</h2><pre class="codeinput">coord = coordOutside;
+dados = data;
+gm_NED = [17052.8,-6680.1,-13897.2];   <span class="comment">% em nanoTesla (a ser normalizado)</span>
+non_incremental_metodologia;
+resultados;
+</pre><pre class="codeoutput">
+D0_NED_B_base1 =
+
+      0.26631      0.13336     0.010017
+     -0.13114       0.2704   -0.0012822
+     -0.43106      0.16676      0.99995
+
+
+q0_base1 =
+
+      0.79634
+    -0.052754
+     -0.13847
+     0.083036
+
+
+euler0_base1 =
+
+      0.15372
+     -0.21339
+     -0.11147
+
+
+D0_NED_B_base2 =
+
+       0.2706      0.13168     0.010017
+     -0.13169      0.27061   -0.0012822
+   -0.0028795  -0.00097212      0.99995
+
+
+q0_base2 =
+
+      0.79705
+  -9.7243e-05
+    -0.004045
+     0.082608
+
+
+euler0_base2 =
+
+      0.13273
+   -0.0064321
+  -0.00082333
+
+
+D0_NED_B_base3 =
+
+      0.89914      0.43756     0.010017
+     -0.43757      0.89919   -0.0012822
+   -0.0095679   -0.0032301      0.99995
+
+
+q0_base3 =
+
+      0.97446
+   0.00049976
+   -0.0050245
+      0.22452
+
+
+euler0_base3 =
+
+       0.4529
+    -0.010017
+   -0.0012822
+
+</pre><h2 id="9">Inside: Verifica&ccedil;&atilde;o de resultados e coment&aacute;rios</h2><p>Temos que os resultados expostos correspondem novamente &agrave;s an&aacute;lises an&aacute;logas de</p><div><ol><li>verifica&ccedil;&atilde;o dos determinantes das DCM iniciais obtidas</li><li>verifica&ccedil;&atilde;o das normas dos quaternions iniciais obtidos</li><li>desalinhamento para as matrizes ortogonais mais pr&oacute;ximas advindas do m&eacute;todo de ortonormaliza&ccedil;&atilde;o iterativa em rela&ccedil;&atilde;o a DCM original para cada base (desalinhamentoOrtoIt)</li><li>desalinhamento para as DCM provenientes dos quaternions obtidos como melhores quaternion de rota&ccedil;&atilde;o para cada estimativa de quaternion inicial (desalinhamentoNormIt) com rela&ccedil;&atilde;o &agrave; estimativa de DCM original para cada base</li><li>medida do desalinhamento cruzado entre as DCM originais, bem como as obtidas do processo de ortonormaliza&ccedil;&atilde;o e normaliza&ccedil;&atilde;o iterativo comparadas com a estimativa de DCM originalmente obtida utilizando a base 3, tomada como refer&ecirc;ncia (melhor estimativa)</li></ol></div><pre class="codeinput">analise;
+</pre><pre class="codeoutput">
+determinantesDCM =
+
+     0.090573     0.090573            1
+
+
+normasQuat =
+
+      0.81426      0.80133            1
+
+
+desalinhamentoOrtoIt =
+
+   6.2546e-17   1.3881e-17            0
+
+
+desalinhamentoNormIt =
+
+     0.072611     0.073392   5.5531e-17
+
+
+desalinhamentoCruzado =
+
+      0.22994   1.0004e-18            0
+      0.33329   5.5527e-17            0
+       0.4189      0.24387   5.5531e-17
+
+</pre><p>V&ecirc;-se que os dados provenientes de dentro do laborat&oacute;rio parecem estar menos confi&aacute;veis (maiores desalinhamentos) quanto aos padr&otilde;es obtidos nas outras duas an&aacute;lises.</p><h2 id="11">Conclus&otilde;es</h2><p>Assim como na Parte 1a, v&ecirc;-se que as estimativas de DCM iniciais apresentam n&atilde;o ortonormalidade associada &agrave; base que as gera, onde pode-se constatar pela compara&ccedil;&atilde;o entre as suas inversas e transpostas. Logo, uma base n&atilde;o ortogonal gera uma DCM tamb&eacute;m n&atilde;o ortonormal (esperado), o mesmo para uma base ortonormal.</p><p>Outra tend&ecirc;ncia observada &eacute; que o desalinhamento (discrep&acirc;ncia) com rela&ccedil;&atilde;o as estimativas iniciais fica menor a partir da ortonormaliza&ccedil;&atilde;o iterativa a medida que se aumenta a complexidade da base utilizada para gerar a DCM. Tal medida ainda n&atilde;o nos diz qual a melhor escolha de base, por&eacute;m, considerando que a base 3 seria a ideal, uma vez que &eacute; ortonormal e conduz a uma DCM que &eacute; de fato uma matriz de rota&ccedil;&atilde;o e um quaternion que &eacute; de rota&ccedil;&atilde;o, temos que a discrep&acirc;ncia da base 2 para a base 3 &eacute; semelhante se comparada a da base 1, indicando ser a base 1 j&aacute; uma &oacute;tima candidata para uso em c&aacute;lculo sem a necessidade de apelar para mais elevados custos computacionais associados &agrave; utiliza&ccedil;&atilde;o das outras bases usando-se o m&eacute;todo de ortonormaliza&ccedil;&atilde;o iterativa.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Lista 01 - Parte 1b
+% Autor: Francisco Castro
+%%
+% Nesta parte fazem-se as análises referentes aos dados presentes nos
+% arquivos _SN500574Inside.mat_ e _SN500574Outside.mat_
+
+%% Preparação do ambiente
+close all
+format
+clear
+clc
+
+%% Implementação da estrutura para o método TRIAD
+% Implementou-se, analogamente, o método TRIAD considerando agora o vetor
+% campo geomagnético ao invés do vetor velocidade angular para a correlação
+% entre as medidas no referencial do corpo e do NED. A metodologia é
+% análoga a feita para a parte 1a, por isso preferiu-se por omitir o
+% código.
+triad_var
+
+%% Carregamento os dados
+load('IMU Estacionaria/SN500574Inside.mat');
+load('IMU Estacionaria/SN500574Outside.mat');
+
+%% Coordenadas iniciais
+coordInside.latitude = -(23.20995)*pi/180;
+coordInside.longitude =  -(45.87712)*pi/180;
+coordInside.altitude = 630; % m
+coordOutside.latitude = -(23.20947)*pi/180;
+coordOutside.longitude =  -(45.87722)*pi/180;
+coordOutside.altitude = 630; % m
+
+%% Outside: Resultados
+coord = coordInside;
+dados = outside;
+gm_NED = [17046.4,-6679.6,-13904.3]';   % em nanoTesla (a ser normalizado)
+non_incremental_metodologia;
+resultados;
+
+%% Outside: Verificação de resultados e comentários
+% Temos que os resultados expostos correspondem às análises análogas de
+%
+% # verificação dos determinantes das DCM iniciais obtidas
+% # verificação das normas dos quaternions iniciais obtidos
+% # desalinhamento para as matrizes ortogonais mais próximas advindas do
+% método de ortonormalização iterativa em relação a DCM original para cada base
+% (desalinhamentoOrtoIt)
+% # desalinhamento para as DCM provenientes dos quaternions obtidos como
+% melhores quaternion de rotação para cada estimativa de quaternion inicial
+% (desalinhamentoNormIt) com relação à estimativa de DCM original para cada
+% base
+% # medida do desalinhamento cruzado entre as DCM originais, bem como as 
+% obtidas do processo de
+% ortonormalização e normalização iterativo comparadas com a estimativa de 
+% DCM
+% originalmente obtida utilizando a base 3, tomada como referência (melhor
+% estimativa)
+analise;
+
+%% Inside: Resultados
+coord = coordOutside;
+dados = data;
+gm_NED = [17052.8,-6680.1,-13897.2];   % em nanoTesla (a ser normalizado)
+non_incremental_metodologia;
+resultados;
+
+
+%% Inside: Verificação de resultados e comentários
+% Temos que os resultados expostos correspondem novamente 
+% às análises análogas de
+%
+% # verificação dos determinantes das DCM iniciais obtidas
+% # verificação das normas dos quaternions iniciais obtidos
+% # desalinhamento para as matrizes ortogonais mais próximas advindas do
+% método de ortonormalização iterativa em relação a DCM original para cada base
+% (desalinhamentoOrtoIt)
+% # desalinhamento para as DCM provenientes dos quaternions obtidos como
+% melhores quaternion de rotação para cada estimativa de quaternion inicial
+% (desalinhamentoNormIt) com relação à estimativa de DCM original para cada
+% base
+% # medida do desalinhamento cruzado entre as DCM originais, bem como as 
+% obtidas do processo de
+% ortonormalização e normalização iterativo comparadas com a estimativa de 
+% DCM
+% originalmente obtida utilizando a base 3, tomada como referência (melhor
+% estimativa)
+
+analise;
+
+%%
+% Vê-se que os dados provenientes de dentro do laboratório parecem estar
+% menos confiáveis (maiores desalinhamentos) quanto aos padrões obtidos nas
+% outras duas análises.
+
+%% Conclusões
+% Assim como na Parte 1a, vê-se que as estimativas de DCM iniciais apresentam não 
+% ortonormalidade associada à base que as gera, onde pode-se constatar pela
+% comparação entre as suas inversas e transpostas. Logo, uma base não
+% ortogonal gera uma DCM também não ortonormal (esperado), o mesmo para
+% uma base ortonormal.
+%%
+% Outra tendência observada é que o desalinhamento (discrepância) com
+% relação as estimativas iniciais fica menor a partir da ortonormalização
+% iterativa a medida que se aumenta a complexidade da base utilizada para
+% gerar a DCM. Tal medida ainda não nos diz qual a melhor escolha de base,
+% porém, considerando que a base 3 seria a ideal, uma vez que é ortonormal
+% e conduz a uma DCM que é de fato uma matriz de rotação e um quaternion
+% que é de rotação, temos que a discrepância da base 2 para a base 3 é
+% semelhante se comparada a da base 1, indicando ser a base 1 já uma ótima
+% candidata para uso em cálculo sem a necessidade de apelar para mais
+% elevados custos computacionais associados à utilização das outras bases
+% usando-se o método de ortonormalização iterativa.
+
+
+
+
+
+##### SOURCE END #####
+--></body></html>
