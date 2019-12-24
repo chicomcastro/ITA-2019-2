@@ -1,0 +1,16 @@
+function [e] = CASO3_estimativaDeriva(t,Omega,modTerra,erroHorizontal)
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+
+omega_s = modTerra.g_0/modTerra.R_0;
+
+k = modTerra.g_0/((omega_s^2-Omega^2)*omega_s*Omega);
+
+e = erroHorizontal/...
+    sqrt(...
+        (-modTerra.R_0/omega_s*(omega_s*t-sin(omega_s*t)))^2 +...
+        (k*(omega_s*sin(Omega*t)-Omega*sin(omega_s*t)) +...
+            -k/omega_s*(Omega^2*(1-cos(omega_s*t))-omega_s^2*(1-cos(Omega*t))))^2 ...
+        );
+
+end

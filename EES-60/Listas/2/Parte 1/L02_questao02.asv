@@ -1,0 +1,25 @@
+rng('default');
+v = @(q,k) 0 + q.*randn(1,k);        % ~N(0,q)
+u = zeros(1,50)+1;
+w = @(r,k) 0 + r.*randn(1,k);        % ~N(0,r)
+
+%%
+f = 1;
+h = 1;
+q = 0.01;
+r = 1;
+k = 50;
+
+v = v(q,k);
+w = w(r,k);
+x(1) = 0;   % x0
+x(k) = f*x(k-1) + u(k-1) + v(k-1); % x_{k+1}
+z(k) = h*x(k) + w(k);
+
+result(1) = x(1);
+for i = 2:50
+    result(i,1) = x(i);
+    result(i,2) = z(i);
+end
+
+%%
